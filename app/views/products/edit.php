@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Edit Product</title>
+    <title>Add Product</title>
 
     <style>
         * {
@@ -15,28 +15,30 @@
             margin: 0;
             min-height: 100vh;
             padding: 40px 20px;
-            background: #f3f4f6;
-            color: #1f2937;
+            background: #0d0d0d;
+            color: #ffffff;
             font-family: Arial, sans-serif;
         }
 
         .card {
-            width: 100%;
             max-width: 650px;
             margin: auto;
-            padding: 30px;
-            background: white;
+            padding: 35px;
+            background: #171717;
+            border: 1px solid #d4af37;
             border-radius: 14px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.6),
+                0 0 15px rgba(212, 175, 55, 0.12);
         }
 
         h1 {
-            margin: 0 0 8px;
-        }
-
-        .subtitle {
-            margin: 0 0 25px;
-            color: #6b7280;
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #d4af37;
+            text-align: center;
+            letter-spacing: 1px;
         }
 
         .form-group {
@@ -46,28 +48,38 @@
         label {
             display: block;
             margin-bottom: 7px;
+            color: #d4af37;
             font-weight: bold;
         }
 
         input,
         textarea {
             width: 100%;
-            padding: 11px;
-            border: 1px solid #d1d5db;
+            padding: 12px;
+
+            background: #0d0d0d;
+            color: #ffffff;
+
+            border: 1px solid #555555;
             border-radius: 8px;
-            font: inherit;
+
+            outline: none;
+
+            transition: 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #d4af37;
+
+            box-shadow:
+                0 0 6px rgba(212, 175, 55, 0.7),
+                0 0 15px rgba(212, 175, 55, 0.25);
         }
 
         textarea {
             min-height: 120px;
             resize: vertical;
-        }
-
-        input:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #0ea5e9;
-            box-shadow: 0 0 0 3px rgba(14, 165, 233, .15);
         }
 
         .row {
@@ -79,37 +91,69 @@
         .actions {
             display: flex;
             gap: 10px;
-            margin-top: 5px;
+            margin-top: 25px;
         }
 
         .btn {
-            display: inline-block;
-            padding: 11px 17px;
-            border: none;
+            padding: 11px 18px;
+
+            border: 1px solid #d4af37;
             border-radius: 8px;
-            background: #0ea5e9;
-            color: white;
-            font: inherit;
+
+            background: #000000;
+            color: #d4af37;
+
             font-weight: bold;
             text-decoration: none;
             cursor: pointer;
+
+            transition: 0.3s ease;
         }
 
         .btn:hover {
-            background: #0284c7;
+            background: #d4af37;
+            color: #000000;
+
+            box-shadow:
+                0 0 8px #d4af37,
+                0 0 18px rgba(212, 175, 55, 0.6),
+                0 0 28px rgba(212, 175, 55, 0.3);
+
+            transform: translateY(-1px);
         }
 
         .cancel {
-            background: #64748b;
+            background: #000000;
+            color: #ffffff;
+            border: 1px solid #555555;
         }
 
         .cancel:hover {
-            background: #475569;
+            background: #111111;
+            color: #d4af37;
+            border-color: #d4af37;
+
+            box-shadow:
+                0 0 8px rgba(212, 175, 55, 0.7),
+                0 0 18px rgba(212, 175, 55, 0.4);
+        }
+
+        .error {
+            margin-bottom: 20px;
+            padding: 12px;
+
+            background: #2a1010;
+            color: #ff7777;
+
+            border: 1px solid #8b0000;
+            border-radius: 8px;
         }
 
         @media (max-width: 600px) {
+
             .row {
                 grid-template-columns: 1fr;
+                gap: 0;
             }
 
             .actions {
@@ -125,97 +169,111 @@
 </head>
 
 <body>
-    <main class="card">
-        <h1>Edit Product</h1>
 
-        <p class="subtitle">
-            Update the product information below.
-        </p>
+    <main class="card">
+
+        <h1>Add Product</h1>
+
+        <?php if (!empty($error)): ?>
+
+            <div class="error">
+                <?= htmlspecialchars($error) ?>
+            </div>
+
+        <?php endif; ?>
+
 
         <form
             method="POST"
-            action="<?= site_url(
-                'products/update/' . (int) $product['id']
-            ) ?>"
+            action="<?= site_url('products/store') ?>"
         >
+
             <div class="form-group">
-                <label for="product_name">Product Name</label>
+
+                <label>Product Name</label>
 
                 <input
                     type="text"
-                    id="product_name"
                     name="product_name"
                     maxlength="100"
-                    value="<?= htmlspecialchars(
-                       $product['product_name'],
-                        ENT_QUOTES,
-                        'UTF-8'
-                    ) ?>"
+                    placeholder="Enter product name"
                     required
                 >
+
             </div>
+
 
             <div class="form-group">
-                <label for="description">Description</label>
+
+                <label>Description</label>
 
                 <textarea
-                    id="description"
                     name="description"
+                    placeholder="Enter product description"
                     required
-                ><?= htmlspecialchars(
-                    $product['description'],
-                    ENT_QUOTES,
-                    'UTF-8'
-                ) ?></textarea>
+                ></textarea>
+
             </div>
 
+
             <div class="row">
+
                 <div class="form-group">
-                    <label for="price">Price</label>
+
+                    <label>Price</label>
 
                     <input
                         type="number"
-                        id="price"
                         name="price"
                         min="0"
                         step="0.01"
-                        value="<?= htmlspecialchars(
-                            $product['price'],
-                            ENT_QUOTES,
-                            'UTF-8'
-                        ) ?>"
+                        placeholder="0.00"
                         required
                     >
+
                 </div>
 
+
                 <div class="form-group">
-                    <label for="quantity">Quantity</label>
+
+                    <label>Quantity</label>
 
                     <input
                         type="number"
-                        id="quantity"
                         name="quantity"
                         min="0"
                         step="1"
-                        value="<?= (int) $product['quantity'] ?>"
+                        placeholder="0"
                         required
                     >
+
                 </div>
+
             </div>
 
+
             <div class="actions">
-                <button type="submit" class="btn">
-                    Update Product
+
+                <button
+                    class="btn"
+                    type="submit"
+                >
+                    Save Product
                 </button>
 
+
                 <a
-                    href="<?= site_url('products') ?>"
                     class="btn cancel"
+                    href="<?= site_url('products') ?>"
                 >
                     Cancel
                 </a>
+
             </div>
+
         </form>
+
     </main>
+
 </body>
 </html>
