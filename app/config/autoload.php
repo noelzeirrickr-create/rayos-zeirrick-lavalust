@@ -72,12 +72,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 |
 |	$autoload['libraries'] = array('database', 'email', 'session');
 */
-<<<<<<< HEAD
 $autoload['libraries'] = array('database');
-=======
-$autoload['libraries'] = array( 'database',
-    'session');
->>>>>>> 5f947b47838874ac030a0f4b7c0502e7ffdbc1b1
 
 /*
 | -------------------------------------------------------------------
@@ -111,11 +106,5 @@ $autoload['models'] = array();
 | config files.  Otherwise, leave it blank.
 |
 */
-<<<<<<< HEAD
 $autoload['configs'] = array('middleware');
-=======
-$autoload['configs'] = array();
-
-$autoload['helpers'] = array('url');
->>>>>>> 5f947b47838874ac030a0f4b7c0502e7ffdbc1b1
 ?>
