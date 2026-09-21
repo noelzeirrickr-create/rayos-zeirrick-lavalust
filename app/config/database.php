@@ -61,11 +61,21 @@ $database['main'] = array(
     'driver'   => 'mysql',
     'hostname' => getenv('DB_HOST') ?: '',
     'port'     => getenv('DB_PORT') ?: '',
+<<<<<<< HEAD
     'username' => getenv('DB_USERNAME') ?: '',
     'password' => getenv('DB_PASSWORD') ?: '',
     'database' => getenv('DB_NAME') ?: '',
     'charset'  => 'utf8mb4',
     'dbprefix' => ''
+=======
+    'username' => getenv('DB_USER'),
+  
+    'password' => getenv('DB_PASSWORD') ?: '',
+    'database' => getenv('DB_NAME') ?: '',
+    'charset'  => 'utf8mb4',
+    'dbprefix' => '',
+    'path'     => ''
+>>>>>>> 5f947b47838874ac030a0f4b7c0502e7ffdbc1b1
 );
 
 

@@ -18,4 +18,8 @@ COPY . /var/www/html/
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html
 
+<<<<<<< HEAD
 EXPOSE 80
+=======
+EXPOSE 80
+>>>>>>> 5f947b47838874ac030a0f4b7c0502e7ffdbc1b1
