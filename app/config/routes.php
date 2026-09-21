@@ -58,19 +58,23 @@ $router->get('/logout', 'AuthController::logout');
 // PRODUCTS
 
 // Display all products
-$router->get('/products', 'ProductController::index');
+$router->get('/products', 'ProductController::index')->middleware('auth');
 
 // Show create form
-$router->get('/products/create', 'ProductController::create');
+$router->get('/products/create', 'ProductController::create')->middleware('auth');
 
 // Save product
-$router->post('/products/store', 'ProductController::store');
+$router->post('/products/store', 'ProductController::store')->middleware('auth');
 
 // Show edit form
-$router->get('/products/edit/{id}', 'ProductController::edit');
+$router->get('/products/edit/{id}', 'ProductController::edit')->middleware('auth');
 
 // Update product
-$router->post('/products/update/{id}', 'ProductController::update');
+$router->post('/products/update/{id}', 'ProductController::update')->middleware('auth');
 
 // Delete product
-$router->get('/products/delete/{id}', 'ProductController::delete');
+$router->get('/products/delete/{id}', 'ProductController::delete')->middleware('auth');
+// Authentication
+$router->get('/login', 'AuthController::login');
+$router->post('/login', 'AuthController::authenticate');
+$router->get('/logout', 'AuthController::logout');

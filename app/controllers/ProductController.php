@@ -4,24 +4,22 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
+   public function __construct()
+{
+    parent::__construct();
 
-        // Load ProductModel
-        $this->call->model('ProductModel');
-    }
+    // Load Session Library
+    $this->call->library('session');
+
+    // Load Product Model
+    $this->call->model('ProductModel');
+}
 
     /**
      * Display all products
      */
     public function index()
     {
-        // Protect page
-        if (!$this->session->userdata('logged_in')) {
-            redirect('login');
-        }
-
         $data['products'] = $this->ProductModel->getAll();
 
         $this->call->view('products/index', $data);
@@ -32,11 +30,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-        // Protect page
-        if (!$this->session->userdata('logged_in')) {
-            redirect('login');
-        }
-
         $this->call->view('products/create');
     }
 
@@ -45,11 +38,6 @@ class ProductController extends Controller
      */
     public function store()
     {
-        // Protect page
-        if (!$this->session->userdata('logged_in')) {
-            redirect('login');
-        }
-
         $product_name = $this->io->post('product_name');
         $description  = $this->io->post('description');
         $price        = $this->io->post('price');
@@ -91,11 +79,6 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        // Protect page
-        if (!$this->session->userdata('logged_in')) {
-            redirect('login');
-        }
-
         $product = $this->ProductModel->getById($id);
 
         if (!$product) {
@@ -117,11 +100,6 @@ class ProductController extends Controller
      */
     public function update($id)
     {
-        // Protect page
-        if (!$this->session->userdata('logged_in')) {
-            redirect('login');
-        }
-
         $product_name = $this->io->post('product_name');
         $description  = $this->io->post('description');
         $price        = $this->io->post('price');
@@ -162,11 +140,6 @@ class ProductController extends Controller
      */
     public function delete($id)
     {
-        // Protect page
-        if (!$this->session->userdata('logged_in')) {
-            redirect('login');
-        }
-
         $product = $this->ProductModel->getById($id);
 
         if (!$product) {
