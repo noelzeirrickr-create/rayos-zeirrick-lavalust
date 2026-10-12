@@ -3,474 +3,606 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supply Chain Management - Product Management</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+<<<<<<< HEAD
+    <title>Product Management</title>
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        :root {
+            --bg: #080808;
+            --bg-soft: #121212;
+            --panel: #181818;
+            --panel-2: #202020;
+            --gold: #d4af37;
+            --gold-soft: #f6d66d;
+            --text: #f5f1e8;
+            --muted: #d8c893;
+            --border: rgba(212, 175, 55, 0.28);
+            --danger: #ff5a5a;
         }
+
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
-            background: #eef2f5;
-            color: #333333;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top, rgba(212, 175, 55, 0.14), transparent 35%),
+                linear-gradient(180deg, #050505 0%, #0f0f0f 100%);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 32px 20px;
         }
 
-        /* Top Green Navigation Header */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 28px;
-            background: #4cb050;
-            color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        nav h2 {
-            margin: 0;
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 0.2px;
-        }
-
-        .user-nav-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 14px;
-            color: #e8f5e9;
-        }
-
-        /* Container Layout */
         .container {
-            width: 95%;
-            max-width: 1300px;
-            margin: 20px auto;
-        }
-
-        /* Top Filter Controls Row */
-        .filter-bar {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .filter-group label {
-            font-size: 12px;
-            font-weight: bold;
-            color: #555;
-        }
-
-        .filter-group select, .filter-group input {
-            padding: 8px 14px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            background: white;
-            font-size: 13px;
-            color: #333;
-            outline: none;
-        }
-
-        /* KPI Dashboard Stats Cards */
-        .kpi-row {
-            display: flex;
-            gap: 18px;
-            margin-bottom: 25px;
-        }
-
-        .kpi-card {
-            background: white;
-            border-radius: 8px;
-            padding: 18px 22px;
-            flex: 1;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .kpi-stat {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .kpi-stat .value {
-            font-size: 24px;
-            font-weight: 800;
-            color: #4cb050;
-        }
-
-        .kpi-stat .label {
-            font-size: 12px;
-            color: #6b7280;
-            font-weight: 600;
-            margin-top: 2px;
-        }
-
-        .kpi-divider {
-            width: 1px;
-            height: 40px;
-            background: #e5e7eb;
-        }
-
-        /* Header Title & Add Button */
-        .page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .page-header h1 {
-            margin: 0;
-            font-size: 20px;
-            color: #1f2937;
-        }
-
-        .page-header p {
-            margin: 3px 0 0;
-            font-size: 13px;
-            color: #6b7280;
-        }
-
-        /* Table Card Container */
-        .card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(24, 24, 24, 0.96);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: 0 18px 30px rgba(212, 175, 55, 0.08);
             overflow: hidden;
-            border: 1px solid #e5e7eb;
         }
 
-        .card-header {
-            padding: 14px 20px;
-            border-bottom: 1px solid #e5e7eb;
+        .topbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 14px;
+            padding: 20px 26px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(18, 18, 18, 0.9);
         }
 
-        .card-header h3 {
+        h1 {
             margin: 0;
-            font-size: 15px;
-            color: #4cb050;
-            font-weight: 700;
-        }
-
-        /* Table Styling matching image */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-        }
-
-        th {
-            background-color: #ffffff;
-            color: #6b7280;
-            font-size: 12px;
-            font-weight: 700;
-            padding: 14px 20px;
-            border-bottom: 1px solid #e5e7eb;
+            font-size: 1.8rem;
+            color: var(--gold-soft);
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        td {
-            padding: 14px 20px;
-            border-bottom: 1px solid #f3f4f6;
-            font-size: 14px;
-            color: #374151;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tr:hover {
-            background-color: #f9fafb;
-        }
-
-        /* Buttons Styling */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 14px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        .btn:hover {
-            opacity: 0.88;
-        }
-
-        .btn-add {
-            background: #4cb050;
-            color: white;
-        }
-
-        .btn-edit {
-            background: #eff6ff;
-            color: #2563eb;
-            border: 1px solid #bfdbfe;
-        }
-
-        .btn-delete {
-            background: #fef2f2;
-            color: #dc2626;
-            border: 1px solid #fecaca;
-        }
-
-        .btn-logout {
-            background: #388e3c;
-            color: white;
-            padding: 6px 12px;
-            font-size: 12px;
         }
 
         .actions {
             display: flex;
-            gap: 8px;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
+            color: #111;
+            font-weight: 700;
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .content {
+            padding: 26px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--panel);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: rgba(212, 175, 55, 0.08);
+            color: var(--gold-soft);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 0.72rem;
+        }
+
+        td {
+            color: var(--text);
+        }
+
+        tbody tr:hover {
+            background: rgba(212, 175, 55, 0.04);
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .actions-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .link {
+            color: var(--gold-soft);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .link.danger {
+            color: #ffb0b0;
+        }
+
+        .empty {
+            text-align: center;
+            color: var(--muted);
+            padding: 26px 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="topbar">
+            <h1>Product Management</h1>
+            <div class="actions">
+                <a class="btn" href="/products/create">Add Product</a>
+                <a class="btn secondary" href="/logout">Logout</a>
+            </div>
+        </div>
+
+        <div class="content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($products)): ?>
+                        <?php foreach ($products as $product): ?>
+                            <tr>
+                                <td><?= htmlspecialchars((string) $product['id']) ?></td>
+                                <td><?= htmlspecialchars($product['product_name']) ?></td>
+                                <td><?= htmlspecialchars($product['description']) ?></td>
+                                <td>₱<?= number_format((float) $product['price'], 2) ?></td>
+                                <td><?= htmlspecialchars((string) $product['quantity']) ?></td>
+                                <td>
+                                    <div class="actions-row">
+                                        <a class="link" href="/products/edit/<?= urlencode((string) $product['id']) ?>">Edit</a>
+                                        <a class="link danger" href="/products/delete/<?= urlencode((string) $product['id']) ?>" onclick="return confirm('Delete this product?')">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="6" class="empty">No products found.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+=======
+
+    <title>Zei's Sari Sari Store</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #0d0d0d;
+            color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            background: #000000;
+            color: #d4af37;
+            border-bottom: 2px solid #d4af37;
+            box-shadow: 0 3px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        nav h2 {
+            margin: 0;
+            color: #d4af37;
+            letter-spacing: 1px;
+        }
+
+        nav div {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #ffffff;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .page-header h1 {
+            margin-bottom: 8px;
+            color: #d4af37;
+            font-size: 32px;
+        }
+
+        .page-header p {
+            margin: 0;
+            color: #b3b3b3;
+        }
+
+        /* CARD */
+        .card {
+            overflow-x: auto;
+            padding: 25px;
+            background: #171717;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #333333;
+            text-align: left;
+        }
+
+        th {
+            background: #000000;
+            color: #d4af37;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            color: #eeeeee;
+        }
+
+        tbody tr {
+            transition: 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: #222222;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 7px;
+            background: #d4af37;
+            color: #000000;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #f5d76e;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        /* EDIT BUTTON */
+        .edit {
+            background: #d4af37;
+            color: #000000;
+        }
+
+        .edit:hover {
+            background: #f5d76e;
+        }
+
+       .delete {
+    background: #000000;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+}
+
+.delete:hover {
+    background: #000000;
+    color: #ffd700;
+    border-color: #ffd700;
+    box-shadow:
+        0 0 8px #d4af37,
+        0 0 16px rgba(212, 175, 55, 0.7),
+        0 0 25px rgba(212, 175, 55, 0.4);
+    transform: translateY(-1px);
+}
+        /* LOGOUT BUTTON */
+        .logout {
+            background: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+        }
+
+        .logout:hover {
+            background: #d4af37;
+            color: #000000;
+        }
+
+        /* ACTION BUTTONS */
+        .actions {
+            display: flex;
+            gap: 7px;
         }
 
         .actions form {
             margin: 0;
         }
 
-        /* Stock Quantity Trend Badges */
-        .badge-qty {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: 600;
-        }
-
-        .badge-icon-up {
-            color: #4cb050;
-            font-weight: bold;
-        }
-
-        .badge-icon-down {
-            color: #ef4444;
-            font-weight: bold;
-        }
-
-        /* Alert Messages */
+        /* ALERTS */
         .alert {
             margin-bottom: 18px;
-            padding: 12px 16px;
-            border-radius: 6px;
-            font-size: 14px;
+            padding: 13px 15px;
+            border-radius: 7px;
+            font-weight: bold;
         }
 
         .success {
-            background: #e8f5e9;
-            color: #2e7d32;
-            border: 1px solid #c8e6c9;
+            background: #173d20;
+            color: #7ee787;
+            border: 1px solid #2d6a3b;
         }
 
         .error {
-            background: #ffebee;
-            color: #c62828;
-            border: 1px solid #ffcdd2;
+            background: #441313;
+            color: #ff7b7b;
+            border: 1px solid #7f1d1d;
         }
 
+        /* EMPTY MESSAGE */
         .empty {
-            padding: 40px;
+            padding: 35px;
             text-align: center;
-            color: #9ca3af;
-            font-size: 14px;
+            color: #999999;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            nav div {
+                flex-direction: column;
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Header / Navbar -->
     <nav>
-        <h2>Supply chain management system</h2>
+        <h2>✦ Zei's Sari Sari Store</h2>
 
-        <div class="user-nav-info">
-            <span>Welcome, <strong><?= htmlspecialchars($username ?? 'User') ?></strong></span>
-            <a class="btn btn-logout" href="<?= site_url('logout') ?>">
-                <i class="fa-solid fa-right-from-bracket"></i> Logout
+        <div>
+            <span>
+                Welcome,
+                <strong style="color:#d4af37;">
+                    <?= htmlspecialchars($username ?? 'User') ?>
+                </strong>
+            </span>
+
+            <a
+                class="btn logout"
+                href="<?= site_url('logout') ?>"
+            >
+                Logout
             </a>
         </div>
     </nav>
 
     <main class="container">
 
-        <!-- Top Filter Dropdowns -->
-        <div class="filter-bar">
-            <div class="filter-group">
-                <label>Warehouse</label>
-                <select>
-                    <option>All</option>
-                    <option>Warehouse 1</option>
-                    <option>Warehouse 2</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label>Date</label>
-                <input type="text" value="22 May 2026 - 22 June 2026" readonly>
-            </div>
-        </div>
-
-        <!-- Dashboard Stat Cards / KPI Header Overview -->
-        <section class="kpi-row">
-            <div class="kpi-card">
-                <div class="kpi-stat">
-                    <span class="value">6.67%</span>
-                    <span class="label">Stockout Rate</span>
-                </div>
-                <div class="kpi-divider"></div>
-                <div class="kpi-stat">
-                    <span class="value" style="font-size: 18px; color:#333;">1</span>
-                    <span class="label">Out of Stock Products</span>
-                </div>
-            </div>
-
-            <div class="kpi-card">
-                <div class="kpi-stat">
-                    <span class="value">2.17%</span>
-                    <span class="label">Return Rate</span>
-                </div>
-                <div class="kpi-divider"></div>
-                <div class="kpi-stat">
-                    <span class="value" style="font-size: 18px; color:#333;">124</span>
-                    <span class="label">Returned Units</span>
-                </div>
-            </div>
-
-            <div class="kpi-card">
-                <div class="kpi-stat">
-                    <span class="value">1.11%</span>
-                    <span class="label">Backorder Rate</span>
-                </div>
-                <div class="kpi-divider"></div>
-                <div class="kpi-stat">
-                    <span class="value" style="font-size: 18px; color:#333;">5,717</span>
-                    <span class="label">Ordered Units</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Dynamic Header & Add Action -->
         <div class="page-header">
+
             <div>
-                <h1>Products Inventory</h1>
-                <p>Manage and monitor available warehouse stock.</p>
+                <h1>Products</h1>
+                <p>Manage the available products in your store.</p>
             </div>
 
-            <a class="btn btn-add" href="<?= site_url('products/create') ?>">
-                <i class="fa-solid fa-plus"></i> Add Product
+            <a
+                class="btn"
+                href="<?= site_url('products/create') ?>"
+            >
+                + Add Product
             </a>
+
         </div>
 
-        <!-- Feedback Alert Messages -->
         <?php if (!empty($success)): ?>
+
             <div class="alert success">
                 <?= htmlspecialchars($success) ?>
             </div>
+
         <?php endif; ?>
 
+
         <?php if (!empty($error)): ?>
+
             <div class="alert error">
                 <?= htmlspecialchars($error) ?>
             </div>
+
         <?php endif; ?>
 
-        <!-- Product Table Card -->
+
         <section class="card">
-            <div class="card-header">
-                <h3>Product Stock Details</h3>
-            </div>
 
             <?php if (empty($products)): ?>
+
                 <div class="empty">
-                    No products found in inventory.
+                    No products found.
                 </div>
+
             <?php else: ?>
+
                 <table>
+
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Product</th>
                             <th>Description</th>
                             <th>Price</th>
-                            <th>Quantity (In Hand)</th>
-                            <th>Created Date</th>
+                            <th>Quantity</th>
+                            <th>Created</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
 
                     <tbody>
+
                         <?php foreach ($products as $product): ?>
+
                             <tr>
-                                <td><strong>#<?= (int) $product['id'] ?></strong></td>
 
                                 <td>
-                                    <strong><?= htmlspecialchars($product['product_name']) ?></strong>
-                                </td>
-
-                                <td style="color: #6b7280;">
-                                    <?= htmlspecialchars($product['description']) ?>
+                                    #<?= (int) $product['id'] ?>
                                 </td>
 
                                 <td>
-                                    <strong>₱<?= number_format((float) $product['price'], 2) ?></strong>
+                                    <strong style="color:#d4af37;">
+                                        <?= htmlspecialchars(
+                                            $product['product_name']
+                                        ) ?>
+                                    </strong>
                                 </td>
 
                                 <td>
-                                    <div class="badge-qty">
-                                        <span><?= (int) $product['quantity'] ?></span>
-                                        <?php if ((int)$product['quantity'] > 20): ?>
-                                            <i class="fa-solid fa-arrow-up badge-icon-up"></i>
-                                        <?php else: ?>
-                                            <i class="fa-solid fa-arrow-down badge-icon-down"></i>
-                                        <?php endif; ?>
-                                    </div>
-                                </td>
-
-                                <td style="color: #6b7280;">
-                                    <?= htmlspecialchars($product['created_at']) ?>
+                                    <?= htmlspecialchars(
+                                        $product['description']
+                                    ) ?>
                                 </td>
 
                                 <td>
+                                    <strong>
+                                        ₱<?= number_format(
+                                            (float) $product['price'],
+                                            2
+                                        ) ?>
+                                    </strong>
+                                </td>
+
+                                <td>
+                                    <?= (int) $product['quantity'] ?>
+                                </td>
+
+                                <td>
+                                    <?= htmlspecialchars(
+                                        $product['created_at']
+                                    ) ?>
+                                </td>
+
+                                <td>
+
                                     <div class="actions">
-                                        <a class="btn btn-edit" href="<?= site_url('products/edit/' . $product['id']) ?>">
-                                            <i class="fa-solid fa-pen-to-square"></i> Edit
+
+                                        <a
+                                            class="btn edit"
+                                            href="<?= site_url(
+                                                'products/edit/' .
+                                                $product['id']
+                                            ) ?>"
+                                        >
+                                            Edit
                                         </a>
 
-                                        <form method="POST" action="<?= site_url('products/delete/' . $product['id']) ?>" onsubmit="return confirm('Delete this product?');">
-                                            <button class="btn btn-delete" type="submit">
-                                                <i class="fa-solid fa-trash"></i> Delete
+                                        <form
+                                            method="POST"
+                                            action="<?= site_url(
+                                                'products/delete/' .
+                                                $product['id']
+                                            ) ?>"
+                                            onsubmit="return confirm(
+                                                'Are you sure you want to delete this product?'
+                                            );"
+                                        >
+
+                                            <button
+                                                class="btn delete"
+                                                type="submit"
+                                            >
+                                                Delete
                                             </button>
+
                                         </form>
+
                                     </div>
+
                                 </td>
+
                             </tr>
+
                         <?php endforeach; ?>
+
                     </tbody>
+
                 </table>
+
             <?php endif; ?>
+
         </section>
+
     </main>
 
+>>>>>>> 5f947b47838874ac030a0f4b7c0502e7ffdbc1b1
 </body>
 </html>

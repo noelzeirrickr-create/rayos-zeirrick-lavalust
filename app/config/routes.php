@@ -44,28 +44,51 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 */
 /** @var object $router **/
 
-// Public routes
+<<<<<<< HEAD
+
+// HOME
+$router->get('/', 'Welcome::index');
+
+
+// AUTHENTICATION
+=======
 $router->get('/', 'AuthController::login');
 
+>>>>>>> 5f947b47838874ac030a0f4b7c0502e7ffdbc1b1
 $router->get('/login', 'AuthController::login');
-
 $router->post('/login', 'AuthController::authenticate');
+$router->get('/logout', 'AuthController::logout');
 
-// Routes that require login
-$router->group(['middleware' => 'auth'], function ($router) {
+<<<<<<< HEAD
 
-    $router->get('/logout', 'AuthController::logout');
+// PRODUCTS
 
-    $router->get('/products', 'ProductController::index');
+// Display all products
+$router->get('/products', 'ProductController::index')->middleware('auth');
 
-    $router->get('/products/create', 'ProductController::create');
+// Show create form
+$router->get('/products/create', 'ProductController::create')->middleware('auth');
 
-    $router->post('/products/store', 'ProductController::store');
+// Save product
+$router->post('/products/store', 'ProductController::store')->middleware('auth');
 
-    $router->get('/products/edit/{id}', 'ProductController::edit');
+// Show edit form
+$router->get('/products/edit/{id}', 'ProductController::edit')->middleware('auth');
 
-    $router->post('/products/update/{id}', 'ProductController::update');
+// Update product
+$router->post('/products/update/{id}', 'ProductController::update')->middleware('auth');
 
-    $router->post('/products/delete/{id}', 'ProductController::delete');
-
-});
+// Delete product
+$router->get('/products/delete/{id}', 'ProductController::delete')->middleware('auth');
+// Authentication
+$router->get('/login', 'AuthController::login');
+$router->post('/login', 'AuthController::authenticate');
+$router->get('/logout', 'AuthController::logout');
+=======
+$router->get('/products', 'ProductController::index');
+$router->get('/products/create', 'ProductController::create');
+$router->post('/products/store', 'ProductController::store');
+$router->get('/products/edit/{id}', 'ProductController::edit');
+$router->post('/products/update/{id}', 'ProductController::update');
+$router->post('/products/delete/{id}', 'ProductController::delete');
+>>>>>>> 5f947b47838874ac030a0f4b7c0502e7ffdbc1b1

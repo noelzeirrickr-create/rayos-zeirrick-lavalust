@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FORM LOGIN</title>
 
-    <!-- Font Awesome for Input & Profile Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Product Login</title>
 
     <style>
         * {
@@ -15,182 +13,128 @@
 
         body {
             margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: #e5e5e5;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            padding: 20px;
+
+            background: #0d0d0d;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
         }
 
         .login-card {
-            width: 360px;
-            background: #ffffff;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            position: relative;
-        }
-
-        /* Top & Bottom Geometric Background Graphics */
-        .card-header-bg {
-            position: relative;
             width: 100%;
-            height: 140px;
-            background: linear-gradient(135deg, #1b5e20, #2e7d32, #43a047);
-            clip-path: polygon(0 0, 100% 0, 100% 40%, 80% 100%, 20% 100%, 0 40%);
-        }
+            max-width: 400px;
+            padding: 35px;
 
-        .card-footer-bg {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 110px;
-            background: linear-gradient(135deg, #1b5e20, #2e7d32, #43a047);
-            clip-path: polygon(0 60%, 20% 0, 80% 0, 100% 60%, 100% 100%, 0 100%);
-            z-index: 1;
-        }
+            background: #171717;
+            border: 1px solid #d4af37;
+            border-radius: 14px;
 
-        /* User Avatar Circle */
-        .avatar-container {
-            width: 90px;
-            height: 90px;
-            background: #333333;
-            border-radius: 50%;
-            position: absolute;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 4px solid #ffffff;
-            z-index: 2;
-        }
-
-        .avatar-container i {
-            color: #ffffff;
-            font-size: 50px;
-        }
-
-        /* Form Body Container */
-        .login-body {
-            padding: 30px 35px 90px 35px;
-            position: relative;
-            z-index: 2;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.6),
+                0 0 15px rgba(212, 175, 55, 0.12);
         }
 
         h1 {
+            margin-top: 0;
+            margin-bottom: 30px;
+
             text-align: center;
-            color: #2e7d32;
-            font-size: 26px;
-            font-weight: 900;
-            margin: 10px 0 25px 0;
+            color: #d4af37;
+
             letter-spacing: 1px;
         }
 
-        .input-group {
+        .form-group {
             margin-bottom: 18px;
         }
 
-        .input-group label {
+        label {
             display: block;
+            margin-bottom: 7px;
+
+            color: #d4af37;
             font-weight: bold;
-            color: #333333;
-            margin-bottom: 6px;
-            font-size: 14px;
         }
 
-        .input-wrapper {
-            display: flex;
-            align-items: center;
-            background: #e0e0e0;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .input-icon {
-            background: #2e7d32;
-            color: white;
-            padding: 10px 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-        }
-
-        .input-wrapper input {
-            border: none;
-            background: transparent;
-            padding: 10px;
-            width: 100%;
-            outline: none;
-            font-size: 14px;
-            color: #333;
-        }
-
-        /* Options Row (Remember me / Forgot password) */
-        .options-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
-            color: #333333;
-            margin: 15px 0 25px 0;
-            font-weight: 500;
-        }
-
-        .remember-me {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-        }
-
-        .remember-me input {
-            cursor: pointer;
-        }
-
-        .forgot-link {
-            color: #333333;
-            text-decoration: none;
-        }
-
-        .forgot-link:hover {
-            text-decoration: underline;
-        }
-
-        /* Submit Button */
-        .btn-submit {
+        input {
             width: 100%;
             padding: 12px;
-            border: none;
-            border-radius: 20px;
-            background: #2e7d32;
-            color: white;
-            font-size: 18px;
+
+            background: #0d0d0d;
+            color: #ffffff;
+
+            border: 1px solid #555555;
+            border-radius: 8px;
+
+            outline: none;
+
+            transition: 0.3s ease;
+        }
+
+        input::placeholder {
+            color: #777777;
+        }
+
+        input:focus {
+            border-color: #d4af37;
+
+            box-shadow:
+                0 0 6px rgba(212, 175, 55, 0.7),
+                0 0 15px rgba(212, 175, 55, 0.25);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+
+            border: 1px solid #d4af37;
+            border-radius: 8px;
+
+            background: #000000;
+            color: #d4af37;
+
+            font-size: 15px;
             font-weight: bold;
-            letter-spacing: 1px;
+
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background 0.2s;
+
+            transition: 0.3s ease;
         }
 
-        .btn-submit:hover {
-            background: #1b5e20;
+        button:hover {
+            background: #d4af37;
+            color: #000000;
+
+            box-shadow:
+                0 0 8px #d4af37,
+                0 0 18px rgba(212, 175, 55, 0.6),
+                0 0 28px rgba(212, 175, 55, 0.3);
+
+            transform: translateY(-1px);
         }
 
-        /* Error Box */
         .error {
-            padding: 10px;
-            background: #fee2e2;
-            color: #991b1b;
-            border-radius: 7px;
-            margin-bottom: 15px;
-            font-size: 14px;
+            margin-bottom: 18px;
+            padding: 11px;
+
+            border-radius: 8px;
+
+            background: #2a1010;
+            color: #ff7777;
+
+            border: 1px solid #8b0000;
+        }
+
+        .store-name {
             text-align: center;
+            margin-bottom: 8px;
+
+            color: #aaaaaa;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -198,58 +142,65 @@
 <body>
 
     <div class="login-card">
-        <!-- Top Graphic Header -->
-        <div class="card-header-bg"></div>
-        
-        <!-- User Avatar Icon -->
-        <div class="avatar-container">
-            <i class="fa-solid fa-user"></i>
+
+        <div class="store-name">
+            Zei's Sari Sari Store
         </div>
 
-        <div class="login-body">
-            <h1>FORM LOGIN</h1>
+        <h1>Product Login</h1>
 
-            <?php if (!empty($error)): ?>
-                <div class="error">
-                    <?= htmlspecialchars($error) ?>
-                </div>
-            <?php endif; ?>
+        <?php if (!empty($error)): ?>
 
-            <form method="POST" action="<?= site_url('login') ?>">
-                <!-- Username Field -->
-                <div class="input-group">
-                    <label for="username">User Name</label>
-                    <div class="input-wrapper">
-                        <span class="input-icon"><i class="fa-solid fa-user"></i></span>
-                        <input type="text" id="username" name="username" required>
-                    </div>
-                </div>
+            <div class="error">
+                <?= htmlspecialchars(
+                    $error,
+                    ENT_QUOTES,
+                    'UTF-8'
+                ) ?>
+            </div>
 
-                <!-- Password Field -->
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <div class="input-wrapper">
-                        <span class="input-icon"><i class="fa-solid fa-lock"></i></span>
-                        <input type="password" id="password" name="password" required>
-                    </div>
-                </div>
+        <?php endif; ?>
 
-                <!-- Options Row -->
-                <div class="options-row">
-                    <label class="remember-me">
-                        <input type="checkbox" name="remember_me">
-                        Remember me
-                    </label>
-                    <a href="#" class="forgot-link">Forgot Password?</a>
-                </div>
+        <form method="POST" action="<?= site_url('login') ?>">
 
-                <!-- Submit Button -->
-                <button type="submit" class="btn-submit">LOGIN</button>
-            </form>
-        </div>
+            <div class="form-group">
 
-        <!-- Bottom Graphic Footer -->
-        <div class="card-footer-bg"></div>
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+            <button type="submit">
+                Login
+            </button>
+
+        </form>
+
     </div>
 
 </body>

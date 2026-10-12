@@ -12,11 +12,4 @@ class UserModel extends Model
             ->where('username', $username)
             ->get();
     }
-
-    public function register_user($data)
-    {
-        return $this->db
-            ->table($this->table)
-            ->insert($data);
-    }
 }
