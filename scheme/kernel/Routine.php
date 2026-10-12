@@ -295,6 +295,72 @@ if ( ! function_exists('config_item'))
     }
 }
 
+if ( ! function_exists('env'))
+{
+	/**
+	 * Safely reads environment values from the runtime, $_ENV/$_SERVER,
+	 * or a project .env file when available.
+	 *
+	 * @param string $key
+	 * @param mixed $default
+	 * @return mixed
+	 */
+	function env($key, $default = null)
+	{
+		$value = getenv($key);
+		if ($value !== false && $value !== null && $value !== '') {
+			return $value;
+		}
+
+		if (isset($_ENV[$key]) && $_ENV[$key] !== '') {
+			return $_ENV[$key];
+		}
+
+		if (isset($_SERVER[$key]) && $_SERVER[$key] !== '') {
+			return $_SERVER[$key];
+		}
+
+		if (defined('ROOT_DIR') && file_exists(ROOT_DIR . '.env')) {
+			static $env_loaded = false;
+			static $loaded_env = array();
+
+			if (!$env_loaded) {
+				foreach (file(ROOT_DIR . '.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+					$line = trim($line);
+
+					if ($line === '' || $line[0] === '#' || !str_contains($line, '=')) {
+						continue;
+					}
+
+					[$env_key, $env_value] = explode('=', $line, 2);
+					$env_key = trim($env_key);
+					$env_value = trim($env_value);
+
+					if (!preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $env_key)) {
+						continue;
+					}
+
+					if (strlen($env_value) >= 2 && in_array($env_value[0], ['"', "'"], true) && $env_value[-1] === $env_value[0]) {
+						$env_value = substr($env_value, 1, -1);
+					}
+
+					$loaded_env[$env_key] = $env_value;
+					putenv("{$env_key}={$env_value}");
+					$_ENV[$env_key] = $_SERVER[$env_key] = $env_value;
+				}
+
+				$env_loaded = true;
+			}
+
+			if (array_key_exists($key, $loaded_env)) {
+				return $loaded_env[$key];
+			}
+		}
+
+		return $default;
+	}
+}
+
 if ( ! function_exists('autoload_config'))
 {
 	/**
