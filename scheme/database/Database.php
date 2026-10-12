@@ -232,7 +232,11 @@ class Database {
 
         $username = isset($database_config['username']) && !empty($database_config['username'])
             ? $database_config['username']
-            : 'root';
+            : null;
+
+        if ($username === null || $username === '') {
+            throw new PDOException('Database username is not configured. Set DB_USERNAME in your .env file or app config.');
+        }
 
         $password = isset($database_config['password']) && !empty($database_config['password'])
             ? $database_config['password']
